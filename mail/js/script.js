@@ -12,13 +12,29 @@
     // stampo il messaggio "accesso negato"
 
 const registeredMails = ["pippo@gmail.com", "pluto@gmail.com", "paperino@gmail.com"];
-const userMail = prompt("Inserisci la tua mail:");
-console.log(userMail);
-let message = "Accesso negato";
 
-for (let i = 0; i < registeredMails.length; i++) {
-    if (userMail === registeredMails[i]) {
-        message = "Accesso effettuato!";
-    }
-}
-console.log(message);
+const userMailInput = document.getElementById("email");
+const accedi = document.getElementById("sbmt");
+const returnMessage = document.getElementById("return-message")
+// const userMail = prompt("Inserisci la tua mail:");
+
+
+accedi.addEventListener("click", function() {
+    
+    let message = "Accesso negato";
+    const userMail = userMailInput.value;
+    for (let i = 0; i < registeredMails.length; i++) {
+        if (userMail === registeredMails[i]) {
+            message = "Accesso effettuato!";
+        };
+        userMailInput.value = "";
+        returnMessage.innerHTML = message;
+        
+    };
+    console.log(message);
+    
+});
+
+
+
+
